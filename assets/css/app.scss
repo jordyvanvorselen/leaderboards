@@ -29,3 +29,15 @@
 .alert:empty {
   display: none;
 }
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #101215;
+}
+
+header a, header span {
+  color: white;
+}
