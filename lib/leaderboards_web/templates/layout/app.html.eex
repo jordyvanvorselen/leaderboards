@@ -22,9 +22,9 @@
             <% end %>
           </ul>
         </nav>
-        <div class="logo">
+        <a href="/" class="logo">
           <img src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Koning Curve Fever Logo"/>
-        </div>
+        </a>
       </section>
     </header>
     <main role="main" class="container">
