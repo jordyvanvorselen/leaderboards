@@ -1,5 +1,7 @@
 # Leaderboards
 
+Elixir Phoenix application to create leaderboards.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
