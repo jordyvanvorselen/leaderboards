@@ -1,17 +1,16 @@
 <section class="phx-hero">
   <img class="crown" src="<%= Routes.static_path(@conn, "/images/crown.png") %>"></img></br>
-  <img class="avatar" src="<%= Routes.static_path(@conn, "/images/jordy.png") %>"></img>
-  <h2><%= @user.first_name %> has won <b><%= @user.score %></b> times!</h2>
-  <%= button("Winner!", to: "/increment") %>
+  <img class="avatar" src="<%= Leaderboards.Avatar.url({@winner.avatar, @winner}, :thumb) %>"></img>
+  <h2><b>King</b> of Curve Fever "<%= @winner.first_name %>" has won <b><%= @winner.score %></b> times!</h2>
+  <%= button("#{@winner.first_name} won again!", to: "/increment/#{@winner.id}") %>
 </section>
 
 <section class="row center-text">
-  <div class="column">
-      <h1><%= Leaderboards.Repo.reload(Pow.Plug.current_user(@conn)).score %></h1>
-      <%= button("Winner!", to: "/world") %>
-  </div>
-  <div class="column">
-      <h1><%= Leaderboards.Repo.reload(Pow.Plug.current_user(@conn)).score %></h1>
-      <%= button("Winner!", to: "/world") %>
-  </div>
+  <%= for loser <- @losers do %>
+    <div class="column">
+      <img class="avatar" src="<%= Leaderboards.Avatar.url({loser.avatar, loser}, :thumb) %>"></img>
+      <h3><%= loser.first_name %> won <%= loser.score %> games.</h3>
+      <%= button("Finally... #{loser.first_name} won!", to: "/increment/#{loser.id}") %>
+    </div>
+  <% end %>
 </section>

@@ -29,7 +29,7 @@ defmodule LeaderboardsWeb.Router do
     pipe_through [:browser, :protected]
 
     get "/", PageController, :index
-    post "/increment", PageController, :increment
+    post "/increment/:id", PageController, :increment
   end
 
   # Other scopes may use custom stacks.

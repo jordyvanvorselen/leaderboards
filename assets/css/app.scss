@@ -48,7 +48,11 @@ header a, header span {
 
 .avatar {
   border-radius: 50%;
-  max-width: 125px;
+  height: 125px;
+  width: 125px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }
 
 .crown {

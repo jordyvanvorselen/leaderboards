@@ -51,5 +51,6 @@ defmodule LeaderboardsWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug Pow.Plug.Session, otp_app: :leaderboards
+  plug Plug.Static, at: "/uploads", from: "uploads"
   plug LeaderboardsWeb.Router
 end

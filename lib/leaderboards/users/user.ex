@@ -1,6 +1,7 @@
 defmodule Leaderboards.Users.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
+  use Arc.Ecto.Schema
 
   import Ecto.Changeset
 
@@ -9,15 +10,16 @@ defmodule Leaderboards.Users.User do
 
     field :first_name, :string
     field :score, :integer, default: 0
+    field :avatar, Leaderboards.Avatar.Type
 
     timestamps()
 
     def changeset(user_or_changeset, attrs) do
       user_or_changeset
       |> pow_changeset(attrs)
-      |> IO.inspect()
       |> Ecto.Changeset.cast(attrs, [:first_name, :score])
-      |> Ecto.Changeset.validate_required([:first_name])
+      |> cast_attachments(attrs, [:avatar])
+      |> Ecto.Changeset.validate_required([:first_name, :avatar])
     end
 
     def increment_score(user) do
